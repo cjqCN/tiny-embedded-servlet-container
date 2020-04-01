@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.cjqcn</groupId>
+    <artifactId>tiny-embedded-servlet-container</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <modules>
+        <module>tiny-embedded-servlet-container-core</module>
+        <module>tiny-embedded-servlet-container-core</module>
+    </modules>
+
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>cjqCN</name>
+            <email>15521255460@163.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:https://github.com/cjqCN/tiny-embedded-servlet-container.git</connection>
+        <url>https://github.com/cjqCN/tiny-embedded-servlet-container.git</url>
+        <developerConnection>scm:git:git@github.com:cjqCN/tiny-embedded-servlet-container.git</developerConnection>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <surefire.redirectTestOutputToFile>true</surefire.redirectTestOutputToFile>
+        <netty.version>4.1.29.Final</netty.version>
+        <junit.version>4.12</junit.version>
+        <jmh.version>1.23</jmh.version>
+        <servlet.version>3.1.0</servlet.version>
+    </properties>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
