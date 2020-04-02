@@ -1,4 +1,8 @@
-package com.github.cjqcn.tiny.embedded.serlvet.container.core.impl;
+package com.github.cjqcn.tiny.embedded.serlvet.container.core.response;
+
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.EmptyHttpHeaders;
+import io.netty.handler.codec.http.HttpHeaders;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
@@ -7,8 +11,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TinyHttpServletResponse implements HttpServletResponse {
+
+    private final Channel channel;
+    private final AtomicBoolean responded;
+    private HttpHeaders httpHeaders = EmptyHttpHeaders.INSTANCE;
+
+    public TinyHttpServletResponse(Channel channel) {
+        this.channel = channel;
+        this.responded = new AtomicBoolean(false);
+    }
+
     @Override
     public void addCookie(Cookie cookie) {
 

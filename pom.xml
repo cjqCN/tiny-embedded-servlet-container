@@ -12,6 +12,7 @@
     <modules>
         <module>tiny-embedded-servlet-container-core</module>
         <module>tiny-embedded-servlet-container-core</module>
+        <module>tiny-embedded-servlet-container-spring</module>
     </modules>
 
 
@@ -42,6 +43,8 @@
         <junit.version>4.12</junit.version>
         <jmh.version>1.23</jmh.version>
         <servlet.version>3.1.0</servlet.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <springboot.version>1.5.9.RELEASE</springboot.version>
     </properties>
 
 

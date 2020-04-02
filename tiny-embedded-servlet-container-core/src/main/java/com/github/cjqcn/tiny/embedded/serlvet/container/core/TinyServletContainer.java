@@ -1,17 +1,16 @@
 package com.github.cjqcn.tiny.embedded.serlvet.container.core;
 
-import java.util.concurrent.CompletionStage;
-
 public interface TinyServletContainer {
-    CompletionStage<TinyServletContainer> start();
+    void launch();
 
-    CompletionStage<TinyServletContainer> suspend();
+    void shutdown();
 
-    CompletionStage<TinyServletContainer> recover();
+    State state();
 
-    CompletionStage<TinyServletContainer> stop();
-
-    boolean isRunning();
-
-    int port();
+    enum State {
+        ALREADY,
+        RUNNING,
+        STOPPED,
+        FAILED
+    }
 }

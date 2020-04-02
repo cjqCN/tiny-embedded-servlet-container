@@ -1,4 +1,6 @@
-package com.github.cjqcn.tiny.embedded.serlvet.container.core.impl;
+package com.github.cjqcn.tiny.embedded.serlvet.container.core.request;
+
+import io.netty.handler.codec.http.FullHttpRequest;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -6,12 +8,23 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
-import java.util.Collection;
-import java.util.Enumeration;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 public class TinyHttpServletRequest implements HttpServletRequest {
+    private final FullHttpRequest fullHttpRequest;
+
+    private volatile boolean decodeCookie = false;
+    private volatile boolean decodeHeader = false;
+    private volatile boolean decodeParam = false;
+
+    private volatile Cookie[] cookies;
+    private volatile Map<String, String> headers;
+    private volatile Map<String, String> params;
+
+    public TinyHttpServletRequest(FullHttpRequest fullHttpRequest) {
+        this.fullHttpRequest = fullHttpRequest;
+    }
+
     @Override
     public String getAuthType() {
         return null;
@@ -19,7 +32,7 @@ public class TinyHttpServletRequest implements HttpServletRequest {
 
     @Override
     public Cookie[] getCookies() {
-        return new Cookie[0];
+        return cookies;
     }
 
     @Override
@@ -355,5 +368,21 @@ public class TinyHttpServletRequest implements HttpServletRequest {
     @Override
     public DispatcherType getDispatcherType() {
         return null;
+    }
+
+
+    private void decodeCookie() {
+    }
+
+    private void decodeHeader() {
+        Set<String> names = fullHttpRequest.headers().names();
+        headers = new HashMap<>(names.size());
+        names.forEach(x -> {
+            headers.put(x, fullHttpRequest.headers().get(x));
+        });
+    }
+
+
+    private void decodeParam() {
     }
 }
